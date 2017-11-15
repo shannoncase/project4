@@ -119,8 +119,12 @@ var mainState = {
 
     // Restart the game
     restartGame: function() {
+        if(score >= 5){
          // Start the 'main' state, which restarts the game
+         $("#mturk_form").submit();
+        }else{
         game.state.start('main');
+    }
     },
 };
 
@@ -141,7 +145,8 @@ $(document).ready(function (){
     // If the HIT hasn't been accepted yet, disabled the form fields.
     if(aid == "ASSIGNMENT_ID_NOT_AVAILABLE") {
         //$('input,textarea,select').attr("DISABLED", "disabled");
-        game.state.stop('main');        
+        //game.state.stop('main');  
+        game.state.start('main');
     }else{
         game.state.start('main');
     }
