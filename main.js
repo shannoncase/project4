@@ -2,7 +2,7 @@
 var form_selector = "#mturk_form";
 
 
-// function for getting URL parameters
+//function for getting URL parameters
 function gup(name) {
   name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
   var regexS = "[\\?&]"+name+"=([^&#]*)";
@@ -134,9 +134,9 @@ game.state.add('main', mainState);
 //game.state.start('main');
 
 $(document).ready(function (){
-    //$("#scoreID").val(0);
+    $("#scoreID").val(0);
 
-    f((aid = gup("assignmentId"))!="" && $(form_selector).length>0) {
+    if((aid = gup("assignmentId"))!="" && $(form_selector).length>0) {
 
     // If the HIT hasn't been accepted yet, disabled the form fields.
     if(aid == "ASSIGNMENT_ID_NOT_AVAILABLE") {
