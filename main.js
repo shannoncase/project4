@@ -2,10 +2,10 @@
 var mainState = {
     preload: function() { 
            // Load the bird sprite
-        game.load.image('bird', 'assets/bee72.png'); 
+        game.load.image('bird', 'assets/smallbee.png'); 
         // This function will be executed at the beginning     
         // That's where we load the images and sounds 
-        game.load.image('pipe', 'assets/flower72.png');
+        game.load.image('pipe', 'assets/flower50.png');
     },
 
     addOnePipe: function(x, y) {
@@ -54,7 +54,7 @@ var mainState = {
     this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);
 
             // Change the background color of the game to blue
-    game.stage.backgroundColor = '#71c5cf';
+    game.stage.backgroundColor = '#7fd192';
 
     // Set the physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
