@@ -134,6 +134,8 @@ game.state.add('main', mainState);
 //game.state.start('main');
 
 $(document).ready(function (){
+    $("#scoreID").val(0);
+
     f((aid = gup("assignmentId"))!="" && $(form_selector).length>0) {
 
     // If the HIT hasn't been accepted yet, disabled the form fields.
