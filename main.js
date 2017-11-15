@@ -5,9 +5,15 @@ var mainState = {
         game.load.image('bird', 'assets/bird.png'); 
         // This function will be executed at the beginning     
         // That's where we load the images and sounds 
+        game.load.image('pipe', 'assets/pipe.png');
     },
 
     create: function() { 
+        // Create an empty group
+    this.pipes = game.add.group(); 
+
+    this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);
+
             // Change the background color of the game to blue
     game.stage.backgroundColor = '#71c5cf';
 
@@ -30,6 +36,36 @@ var mainState = {
     spaceKey.onDown.add(this.jump, this);    
         // This function is called after the preload function     
         // Here we set up the game, display sprites, etc.  
+    },
+
+    addOnePipe: function(x, y) {
+    // Create a pipe at the position x and y
+    var pipe = game.add.sprite(x, y, 'pipe');
+
+    // Add the pipe to our previously created group
+    this.pipes.add(pipe);
+
+    // Enable physics on the pipe 
+    game.physics.arcade.enable(pipe);
+
+    // Add velocity to the pipe to make it move left
+    pipe.body.velocity.x = -200; 
+
+    // Automatically kill the pipe when it's no longer visible 
+    pipe.checkWorldBounds = true;
+    pipe.outOfBoundsKill = true;
+    },
+
+    addRowOfPipes: function() {
+    // Randomly pick a number between 1 and 5
+    // This will be the hole position
+    var hole = Math.floor(Math.random() * 5) + 1;
+
+    // Add the 6 pipes 
+    // With one big hole at position 'hole' and 'hole + 1'
+    for (var i = 0; i < 8; i++)
+        if (i != hole && i != hole + 1) 
+            this.addOnePipe(400, i * 60 + 10);   
     },
 
     update: function() {
