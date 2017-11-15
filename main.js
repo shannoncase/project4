@@ -103,7 +103,7 @@ var mainState = {
 
     // Restart the game
     restartGame: function() {
-        var earn += score;
+        var earn += this.score;
 
         print(earn)
          // Start the 'main' state, which restarts the game
