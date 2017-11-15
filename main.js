@@ -9,6 +9,12 @@ var mainState = {
     },
 
     create: function() { 
+
+        this.score = 0;
+    
+    this.labelScore = game.add.text(20, 20, "0", 
+    { font: "30px Arial", fill: "#ffffff" });   
+
         // Create an empty group
     this.pipes = game.add.group(); 
 
@@ -34,6 +40,9 @@ var mainState = {
     },
 
     addRowOfPipes: function() {
+
+    this.score += 1;
+    this.labelScore.text = this.score;
     // Randomly pick a number between 1 and 5
     // This will be the hole position
     var hole = Math.floor(Math.random() * 5) + 1;
@@ -71,6 +80,8 @@ var mainState = {
 
 
     update: function() {
+        game.physics.arcade.overlap(
+    this.bird, this.pipes, this.restartGame, null, this);
             // If the bird is out of the screen (too high or too low)
     // Call the 'restartGame' function
     if (this.bird.y < 0 || this.bird.y > 490)
