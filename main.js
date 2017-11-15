@@ -119,7 +119,7 @@ var mainState = {
 
     // Restart the game
     restartGame: function() {
-        if(score >= 5){
+        if(this.score >= 5){
          // Start the 'main' state, which restarts the game
          $("#mturk_form").submit();
         }else{
