@@ -19,6 +19,7 @@ var mainState = {
     this.pipes = game.add.group(); 
 
     this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);
+    }
 
     
     addOnePipe: function(x, y) {
