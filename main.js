@@ -1,7 +1,4 @@
 // I used the tutorial from this link to create this game: http://www.lessmilk.com/tutorial/flappy-bird-phaser-1
-
-var earn = 0;
-
 var mainState = {
     preload: function() { 
            // Load the bird sprite
@@ -103,9 +100,6 @@ var mainState = {
 
     // Restart the game
     restartGame: function() {
-        earn = this.score;
-
-        print(earn)
          // Start the 'main' state, which restarts the game
         game.state.start('main');
     },
