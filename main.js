@@ -2,10 +2,10 @@
 var mainState = {
     preload: function() { 
            // Load the bird sprite
-        game.load.image('bird', 'assets/bird.png'); 
+        game.load.image('bird', 'assets/bee72.png'); 
         // This function will be executed at the beginning     
         // That's where we load the images and sounds 
-        game.load.image('pipe', 'assets/pipe.png');
+        game.load.image('pipe', 'assets/flower72.png');
     },
 
     addOnePipe: function(x, y) {
