@@ -1,4 +1,21 @@
 // I used the tutorial from this link to create this game: http://www.lessmilk.com/tutorial/flappy-bird-phaser-1
+var form_selector = "#mturk_form";
+
+
+// function for getting URL parameters
+function gup(name) {
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.href);
+  if(results == null)
+    return "";
+  else return unescape(results[1]);
+}
+
+
+
+
 var mainState = {
     preload: function() { 
            // Load the bird sprite
@@ -29,6 +46,7 @@ var mainState = {
     addRowOfPipes: function() {
 
     this.score += 1;
+     $("#scoreID").val(this.score);
     this.labelScore.text = this.score;
     // Randomly pick a number between 1 and 5
     // This will be the hole position
@@ -44,6 +62,7 @@ var mainState = {
     create: function() { 
 
     this.score = 0;
+    $("#scoreID").val(this.score);
     
     this.labelScore = game.add.text(20, 20, "0", 
      {font: "30px Arial", fill: "#ffffff" });   
@@ -112,4 +131,30 @@ var game = new Phaser.Game(400, 490);
 game.state.add('main', mainState); 
 
 // Start the state to actually start the game
-game.state.start('main');
+//game.state.start('main');
+
+$(document).ready(function (){
+    f((aid = gup("assignmentId"))!="" && $(form_selector).length>0) {
+
+    // If the HIT hasn't been accepted yet, disabled the form fields.
+    if(aid == "ASSIGNMENT_ID_NOT_AVAILABLE") {
+        //$('input,textarea,select').attr("DISABLED", "disabled");
+        game.state.stop('main');        
+    }else{
+        game.state.start('main');
+    }
+    
+
+    // Add a new hidden input element with name="assignmentId" that
+    // with assignmentId as its value.
+    var aid_input = $("<input type='hidden' name='assignmentId' value='" + aid + "'>").appendTo($(form_selector));
+
+    // Make sure the submit form's method is POST
+    $(form_selector).attr('method', 'POST');
+
+    // Set the Action of the form to the provided "turkSubmitTo" field
+    if((submit_url=gup("turkSubmitTo"))!="") {
+      $(form_selector).attr('action', submit_url + '/mturk/externalSubmit');
+    }
+  }
+});
