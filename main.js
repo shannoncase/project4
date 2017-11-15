@@ -44,7 +44,7 @@ var mainState = {
         // Here we set up the game, display sprites, etc.  
     },
 
-        addOnePipe: function(x, y) {
+    addOnePipe: function(x, y) {
     // Create a pipe at the position x and y
     var pipe = game.add.sprite(x, y, 'pipe');
 
@@ -102,7 +102,7 @@ var mainState = {
     restartGame: function() {
          // Start the 'main' state, which restarts the game
         game.state.start('main');
-    },
+    }
 };
 
 // Initialize Phaser, and create a 400px by 490px game
