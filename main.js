@@ -10,7 +10,7 @@ var mainState = {
 
     create: function() { 
 
-        this.score = 0;
+    this.score = 0;
     
     this.labelScore = game.add.text(20, 20, "0", 
     { font: "30px Arial", fill: "#ffffff" });   
@@ -80,7 +80,8 @@ var mainState = {
 
 
     update: function() {
-        game.physics.arcade.overlap(
+
+    game.physics.arcade.overlap(
     this.bird, this.pipes, this.restartGame, null, this);
             // If the bird is out of the screen (too high or too low)
     // Call the 'restartGame' function
