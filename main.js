@@ -10,10 +10,10 @@ var mainState = {
 
     create: function() { 
 
-    //this.score = 0;
+    this.score = 0;
     
-    //this.labelScore = game.add.text(20, 20, "0", 
-    //{ font: "30px Arial", fill: "#ffffff" });   
+    this.labelScore = game.add.text(20, 20, "0", 
+     {font: "30px Arial", fill: "#ffffff" });   
 
         // Create an empty group
     this.pipes = game.add.group(); 
@@ -41,8 +41,8 @@ var mainState = {
 
     addRowOfPipes: function() {
 
-    //this.score += 1;
-    //this.labelScore.text = this.score;
+    this.score += 1;
+    this.labelScore.text = this.score;
     // Randomly pick a number between 1 and 5
     // This will be the hole position
     var hole = Math.floor(Math.random() * 5) + 1;
@@ -87,7 +87,7 @@ var mainState = {
         this.restartGame();
         // This function is called 60 times per second    
         // It contains the game's logic 
-         
+
     game.physics.arcade.overlap(
     this.bird, this.pipes, this.restartGame, null, this);
 
