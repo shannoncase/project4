@@ -81,14 +81,16 @@ var mainState = {
 
     update: function() {
 
-    game.physics.arcade.overlap(
-    this.bird, this.pipes, this.restartGame, null, this);
             // If the bird is out of the screen (too high or too low)
     // Call the 'restartGame' function
     if (this.bird.y < 0 || this.bird.y > 490)
         this.restartGame();
         // This function is called 60 times per second    
-        // It contains the game's logic   
+        // It contains the game's logic 
+         
+    game.physics.arcade.overlap(
+    this.bird, this.pipes, this.restartGame, null, this);
+
     },
     // Make the bird jump 
     
