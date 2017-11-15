@@ -1,5 +1,6 @@
 // I used the tutorial from this link to create this game: http://www.lessmilk.com/tutorial/flappy-bird-phaser-1
 
+var earn = 0;
 
 var mainState = {
     preload: function() { 
